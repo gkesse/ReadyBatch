@@ -3,7 +3,7 @@
 echo.
 ::===============================================
 call GConfig :Init
-call GConfig :SetData PROCESS FILE
+call GSetting :Load data/config/config.txt
 call GProcess :Run
 ::===============================================
 echo.

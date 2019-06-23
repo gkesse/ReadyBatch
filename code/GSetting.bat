@@ -4,12 +4,11 @@ call %*
 goto :eof
 ::===============================================
 :Load
-setlocal enabledelayedexpansion  
     set lFile=%1
     call GFile :Exist %lFile%
-    for /f "eol=# tokens=*" %%A in (%lFile%) do (
-        echo %%A
+    for /f "eol=# tokens=1* delims== " %%A in (%lFile%) do (
+        call GConfig :SetData %%A %%B
     )
-endlocal
+    call GConfig :ShowData
 goto :eof
 ::===============================================

@@ -5,7 +5,8 @@ goto :eof
 ::===============================================
 :Run
 setlocal enabledelayedexpansion
-    call GSetting :Load data/config/config.txt
+    echo [ GFile ] Start
+    call GFile :Exist data/config/config.txt2
 endlocal
 goto :eof
 ::===============================================
