@@ -1,10 +1,7 @@
 @echo off 
 ::===============================================
-echo.
-::===============================================
 call GConfig :Init
-call GSetting :Load data/config/config.txt
-call GProcess :Run
-::===============================================
-echo.
+call GOptions :GetArgs %*
+call GConfig :ShowData
+::call GProcess :Run
 ::===============================================

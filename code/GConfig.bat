@@ -4,30 +4,28 @@ call %*
 goto :eof
 ::===============================================
 :Init
-    set m_GConfigDataMapKeys=
-    set m_GConfigDataMap=
+    set GCONFIG_KEY_MAP=
+    set GCONFIG_DATA_MAP=
 goto :eof
 ::===============================================
 :SetData
-setlocal enabledelayedexpansion
-    set lKey=%1
-    set lValue=%2
-endlocal && (
-    set m_GConfigDataMap[%lKey%]=%lValue%
-    set m_GConfigDataMapKeys=%m_GConfigDataMapKeys% %lKey%
-)
+    set lKey=%~1
+    set lValue=%~2
+    set GCONFIG_DATA_MAP[%lKey%]=%lValue%
+    set GCONFIG_KEY_MAP=%GCONFIG_KEY_MAP% %lKey%
 goto :eof
 ::===============================================
 :GetData
-setlocal enabledelayedexpansion
     set lKey=%1
-    set lValue=!m_GConfigDataMap[%lKey%]!
-endlocal && ( set %2=%lValue% )
+    set lValue=!GCONFIG_DATA_MAP[%lKey%]!
+    set %2=%lValue%
 goto :eof
 ::===============================================
 :ShowData
 setlocal enabledelayedexpansion
-    for %%K in (%m_GConfigDataMapKeys%) do echo %%K = !m_GConfigDataMap[%%K]!
+    for %%K in (%GCONFIG_KEY_MAP%) do (
+        echo %%K = !GCONFIG_DATA_MAP[%%K]!
+    ) 
     echo.
 endlocal
 goto :eof

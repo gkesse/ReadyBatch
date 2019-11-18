@@ -3,10 +3,9 @@
 call %*
 goto :eof
 ::===============================================
-:Run
-setlocal enabledelayedexpansion
-    echo [ GFile ] Start
-    call GFile :Exist data/config/config.txt
-endlocal
+:GetArgs
+    call GConfig :SetData PROCESS %1
+    call GConfig :SetData OPTION_1 %2
+    call GConfig :SetData OPTION_2 %3
 goto :eof
 ::===============================================

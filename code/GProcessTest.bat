@@ -1,13 +1,9 @@
+@echo off 
 ::===============================================
-:: Batch | Guide
+call %*
+goto :eof
 ::===============================================
-:: La boucle (for)
+:Run
+    echo oooooooooooooooooooo
+goto :eof
 ::===============================================
-:: La boucle (for)
-@echo off
-set GSET=(0 1 2 3 4 5 6)
-for %i in (%GSET) do echo %i
-
-
-
-
