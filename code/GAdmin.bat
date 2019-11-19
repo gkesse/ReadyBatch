@@ -2,6 +2,5 @@
 ::===============================================
 call GConfig :Init
 call GOptions :GetArgs %*
-call GConfig :ShowData
-::call GProcess :Run
+call GProcess :Run
 ::===============================================

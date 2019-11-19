@@ -16,9 +16,12 @@ goto :eof
 goto :eof
 ::===============================================
 :GetData
+setlocal enabledelayedexpansion
     set lKey=%1
     set lValue=!GCONFIG_DATA_MAP[%lKey%]!
+endlocal & (
     set %2=%lValue%
+)
 goto :eof
 ::===============================================
 :ShowData
