@@ -4,6 +4,6 @@ call %*
 goto :eof
 ::===============================================
 :Run
-    echo oooooooooooooooooooo
+    call GBatch :Test
 goto :eof
 ::===============================================

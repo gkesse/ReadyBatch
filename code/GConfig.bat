@@ -1,11 +1,9 @@
 @echo off 
 ::===============================================
-call %*
-goto :eof
+set GCONFIG_KEY_MAP=
+set GCONFIG_DATA_MAP=
 ::===============================================
-:Init
-    set GCONFIG_KEY_MAP=
-    set GCONFIG_DATA_MAP=
+call %*
 goto :eof
 ::===============================================
 :SetData
