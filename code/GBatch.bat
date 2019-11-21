@@ -4,6 +4,7 @@ set "GBATCH_TEST_MAP="
 set "GBATCH_TEST_MAP=%GBATCH_TEST_MAP%;CharScape"
 set "GBATCH_TEST_MAP=%GBATCH_TEST_MAP%;CommandMultiLine"
 set "GBATCH_TEST_MAP=%GBATCH_TEST_MAP%;EchoScape"
+set "GBATCH_TEST_MAP=%GBATCH_TEST_MAP%;Comment"
 ::===============================================
 call %*
 goto :eof
@@ -89,5 +90,14 @@ goto :eof
     echo #------------------------------------------------
     echo.
     echo. /?  Print this help.
+goto :eof
+::===============================================
+:Comment
+    echo #------------------------------------------------
+    echo ### Comment
+    echo #------------------------------------------------
+    :: Voici un commentaire
+    rem Voici un commentaire
+    echo Voici un commentaire
 goto :eof
 ::===============================================
