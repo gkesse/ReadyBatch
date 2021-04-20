@@ -12,36 +12,46 @@ goto :eof
     ) else ( if "%G_STATE%" == "S_SQLITE" ( goto SQLITE %*
     ) else ( if "%G_STATE%" == "S_SAVE" ( goto SAVE %*
     ) else ( if "%G_STATE%" == "S_LOAD" ( goto LOAD %*
-    ) else ( goto :eof ))))))
+    ) else ( goto :eof 
+    ))))))
 goto :RunLoop
 ::===============================================
 :INIT
-    echo INIT...
+    printf "\n"
+    printf "ADMIN !!!\n"
+    printf "\t%%-2s : %%s\n" "-q" "quitter l'application"
+    printf "\n"
     set "G_STATE=S_LOAD"
 goto :RunLoop
 ::===============================================
 :METHOD
-    echo METHOD...
+    printf "ADMIN :\n"
+    printf "\t%%-2s : %%s\n" "1" "S_SQLITE"
+    printf "\t%%-2s : %%s\n" "2" "S_STRING"
+    printf "\n"
     set "G_STATE=S_CHOICE"
 goto :RunLoop
 ::===============================================
 :CHOICE
-    echo CHOICE...
-    set "G_STATE=S_SQLITE"
+    set "lAnswer="
+    set /p lAnswer="ADMIN (%G_ADMIN_ID%) ? "
+    if "%lAnswer%" == "" ( set "lAnswer=%G_ADMIN_ID%" )
+    if "%lAnswer%" == "-q" ( set "G_STATE=S_END" 
+    ) else ( if "%lAnswer%" == "1" ( set "G_STATE=S_SQLITE" && set "G_ADMIN_ID=%lAnswer%" 
+    ) else ( if "%lAnswer%" == "2" ( set "G_STATE=S_STRING" && set "G_ADMIN_ID=%lAnswer%" 
+    )))
 goto :RunLoop
 ::===============================================
 :SQLITE
-    echo SQLITE...
+    call manager\GSQLiteUi :Run %*
     set "G_STATE=S_SAVE"
 goto :RunLoop
 ::===============================================
 :SAVE
-    echo SAVE...
     set "G_STATE=S_END"
 goto :RunLoop
 ::===============================================
 :LOAD
-    echo LOAD...
     set "G_STATE=S_METHOD"
 goto :RunLoop
 ::===============================================
