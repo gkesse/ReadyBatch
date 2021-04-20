@@ -8,7 +8,11 @@ goto :eof
 :RunLoop
     if "%G_STATE%" == "S_INIT" ( goto Init %*
     ) else ( if "%G_STATE%" == "S_METHOD" ( goto Method %*
-    ) else ( goto :eof ))
+    ) else ( if "%G_STATE%" == "S_CHOICE" ( goto Method %*
+    ) else ( if "%G_STATE%" == "S_SQLITE" ( goto Method %*
+    ) else ( if "%G_STATE%" == "S_SAVE" ( goto Method %*
+    ) else ( if "%G_STATE%" == "S_LOAD" ( goto Method %*
+    ) else ( goto :eof ))))))
 goto :RunLoop
 ::===============================================
 :Init
