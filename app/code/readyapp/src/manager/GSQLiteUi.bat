@@ -58,7 +58,7 @@ goto :RunLoop
 ::===============================================
 :SHOW_VERSION
     printf "\n"
-    sqlite3 --version
+    call manager\GSQLite :Version
     set "G_STATE=S_SAVE"
 goto :RunLoop
 ::===============================================

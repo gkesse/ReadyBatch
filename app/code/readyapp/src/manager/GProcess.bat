@@ -16,6 +16,7 @@ goto :eof
 goto :eof
 ::===============================================
 :Ui
+    call manager\GSQLite :Init %*
     call manager\GProcessUi :Run %*
 goto :eof
 ::===============================================
