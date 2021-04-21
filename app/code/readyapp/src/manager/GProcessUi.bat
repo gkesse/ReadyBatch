@@ -44,6 +44,7 @@ goto :RunLoop
 ::===============================================
 :SQLITE
     call manager\GSQLiteUi :Run %*
+    call manager\GConfig :Run MODULE HELLO
     set "G_STATE=S_SAVE"
 goto :RunLoop
 ::===============================================
