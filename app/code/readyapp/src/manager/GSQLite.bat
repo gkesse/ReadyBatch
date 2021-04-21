@@ -48,8 +48,8 @@ goto :eof
         printf "| "
         printf "%%-*s" %2 %%a
         printf " |"
+        printf "\n"
     )
-    printf "\n"
     ::sep
     printf "+-"
     for /l %%a in (1, 1, %2) do (
@@ -83,8 +83,8 @@ goto :eof
         printf " | "
         printf "%%-*s" %3 %%b
         printf " |"
+        printf "\n"
     )
-    printf "\n"
     ::sep
     printf "+-"
     for /l %%a in (1, 1, 2) do (

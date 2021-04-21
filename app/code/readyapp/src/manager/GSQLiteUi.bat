@@ -69,7 +69,7 @@ goto :RunLoop
     call manager\GSQLite :Clear
     call manager\GSQLite :Query "select name from sqlite_master"
     call manager\GSQLite :Run > %GTMP_FILE_02%
-    call manager\GSQLite :Show 1 20
+    call manager\GSQLite :Show 1 30
     set "G_STATE=S_SAVE"
 goto :RunLoop
 ::===============================================
