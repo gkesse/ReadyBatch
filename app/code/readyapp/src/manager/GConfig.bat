@@ -4,10 +4,10 @@ call %*
 goto :eof
 ::===============================================
 :Load
-    call :Clear
-    call :Query "select config_value from config_data ("
-    call :Query "where config_key = '%1'"
-    call :Run
+    call manager\GSQLite :Clear
+    call manager\GSQLite :Query "select config_value from config_data ("
+    call manager\GSQLite :Query "where config_key = '%1'"
+    call manager\GSQLite :Run
 goto :eof
 ::===============================================
 :Save
@@ -15,10 +15,10 @@ goto :eof
 goto :eof
 ::===============================================
 :Insert
-    call :Clear
-    call :Query "insert into config_data"
-    call :Query "values (config_key, config_value)"
-    call :Query "('%1', '%2')"
-    call :Run
+    call manager\GSQLite :Clear
+    call manager\GSQLite :Query "insert into config_data"
+    call manager\GSQLite :Query "(config_key, config_value)"
+    call manager\GSQLite :Query "values ('%1', '%2')"
+    call manager\GSQLite :Run
 goto :eof
 ::===============================================

@@ -60,6 +60,7 @@ goto :RunLoop
 :SHOW_VERSION
     printf "\n"
     call manager\GSQLite :Version
+    call manager\GConfig :Insert "MODULE" "HELLO"
     set "G_STATE=S_SAVE"
 goto :RunLoop
 ::===============================================
@@ -67,15 +68,18 @@ goto :RunLoop
     printf "\n"
     call manager\GSQLite :Clear
     call manager\GSQLite :Query "select name from sqlite_master"
-    call manager\GSQLite :Run
+    call manager\GSQLite :Run > %GTMP_FILE_02%
+    call manager\GSQLite :Show 1 20
     set "G_STATE=S_SAVE"
 goto :RunLoop
 ::===============================================
 :CONFIG_DATA_SHOW_DATA
     printf "\n"
+
     call manager\GSQLite :Clear
     call manager\GSQLite :Query "select * from config_data"
-    call manager\GSQLite :Run
+    call manager\GSQLite :Run > %GTMP_FILE_02%
+    call manager\GSQLite :Show 2 20 30
     set "G_STATE=S_SAVE"
 goto :RunLoop
 ::===============================================
