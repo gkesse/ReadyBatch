@@ -11,10 +11,6 @@ goto :eof
     call :Query "config_value text"
     call :Query ")"
     call :Run
-    :: tables
-    call :Clear
-    call :Query "select * from sqlite_master"
-    call :Run
 goto :eof
 ::===============================================
 :Version

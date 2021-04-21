@@ -12,11 +12,12 @@ goto :eof
     ) else ( if "%G_STATE%" == "S_CHOICE" ( goto CHOICE %*
     ) else ( if "%G_STATE%" == "S_SHOW_VERSION" ( goto SHOW_VERSION %*
     ) else ( if "%G_STATE%" == "S_SHOW_TABLES" ( goto SHOW_TABLES %*
+    ) else ( if "%G_STATE%" == "S_CONFIG_DATA_SHOW_DATA" ( goto CONFIG_DATA_SHOW_DATA %*
     ) else ( if "%G_STATE%" == "S_SAVE" ( goto SAVE %*
     ) else ( if "%G_STATE%" == "S_LOAD" ( goto LOAD %*
     ) else ( if "%G_STATE%" == "S_QUIT" ( goto QUIT %*
     ) else ( goto :eof 
-    )))))))))
+    ))))))))))
 goto :RunLoop
 ::===============================================
 :ADMIN
@@ -52,7 +53,7 @@ goto :RunLoop
     ) else ( if "%lAnswer%" == "-a" ( set "G_STATE=S_ADMIN" 
     ) else ( if "%lAnswer%" == "1" ( set "G_STATE=S_SHOW_VERSION" && set "G_SQLITE_ID=%lAnswer%" 
     ) else ( if "%lAnswer%" == "2" ( set "G_STATE=S_SHOW_TABLES" && set "G_SQLITE_ID=%lAnswer%" 
-    ) else ( if "%lAnswer%" == "3" ( set "G_STATE=S_STRING" && set "G_SQLITE_ID=%lAnswer%" 
+    ) else ( if "%lAnswer%" == "3" ( set "G_STATE=S_CONFIG_DATA_SHOW_DATA" && set "G_SQLITE_ID=%lAnswer%" 
     )))))
 goto :RunLoop
 ::===============================================
@@ -64,7 +65,17 @@ goto :RunLoop
 ::===============================================
 :SHOW_TABLES
     printf "\n"
-    sqlite3 --version
+    call manager\GSQLite :Clear
+    call manager\GSQLite :Query "select name from sqlite_master"
+    call manager\GSQLite :Run
+    set "G_STATE=S_SAVE"
+goto :RunLoop
+::===============================================
+:CONFIG_DATA_SHOW_DATA
+    printf "\n"
+    call manager\GSQLite :Clear
+    call manager\GSQLite :Query "select * from config_data"
+    call manager\GSQLite :Run
     set "G_STATE=S_SAVE"
 goto :RunLoop
 ::===============================================

@@ -1,0 +1,4 @@
+table|config_data|config_data|2|CREATE TABLE config_data (
+config_key text,
+config_value text
+)
