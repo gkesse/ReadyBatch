@@ -48,10 +48,12 @@ goto :RunLoop
 goto :RunLoop
 ::===============================================
 :SAVE
+    call manager\GConfig :Save G_ADMIN_ID %G_ADMIN_ID%
     set "G_STATE=S_END"
 goto :RunLoop
 ::===============================================
 :LOAD
+    call manager\GConfig :Load G_ADMIN_ID G_ADMIN_ID
     set "G_STATE=S_METHOD"
 goto :RunLoop
 ::===============================================

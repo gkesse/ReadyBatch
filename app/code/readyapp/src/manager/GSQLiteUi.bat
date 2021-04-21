@@ -60,7 +60,6 @@ goto :RunLoop
 :SHOW_VERSION
     printf "\n"
     call manager\GSQLite :Version
-    call manager\GConfig :Insert "MODULE" "HELLO"
     set "G_STATE=S_SAVE"
 goto :RunLoop
 ::===============================================
@@ -84,10 +83,12 @@ goto :RunLoop
 goto :RunLoop
 ::===============================================
 :SAVE
+    call manager\GConfig :Save G_SQLITE_ID %G_SQLITE_ID%
     set "G_STATE=S_QUIT"
 goto :RunLoop
 ::===============================================
 :LOAD
+    call manager\GConfig :Load G_SQLITE_ID G_SQLITE_ID
     set "G_STATE=S_METHOD"
 goto :RunLoop
 ::===============================================

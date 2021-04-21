@@ -4,6 +4,10 @@ call %*
 goto :eof
 ::===============================================
 :Init
+    :: drop
+    call :Clear
+    call :Query "drop table if exists config_data_o"
+    call :Run
     :: config_data
     call :Clear
     call :Query "create table if not exists config_data ("

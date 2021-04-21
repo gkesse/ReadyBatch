@@ -1,1 +1,3 @@
-select * from config_data
+update config_data
+set config_value = '1'
+where config_key = 'G_ADMIN_ID'
